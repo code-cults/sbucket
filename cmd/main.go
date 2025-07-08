@@ -7,6 +7,7 @@ import (
 	"github.com/srirangamuc/sbucket/internal/model"
 	"github.com/gofiber/fiber/v2"
 	"github.com/srirangamuc/sbucket/internal/api/handler"
+	"github.com/srirangamuc/sbucket/internal/middleware"
 )
 
 func main(){
@@ -19,6 +20,15 @@ func main(){
 	})
 	app.Post("/signup",handler.Signup)
 	app.Post("/login",handler.Login)
+
+	app.Get("/me",middleware.RequireAuth(),func(c *fiber.Ctx) error{
+		userID := c.Locals("userID").(int)
+		return c.JSON(fiber.Map{
+			"message":"Welcome user!",
+			"userID" : userID,
+		})
+	})
+
 	port := config.GetEnv("PORT","3000")
 	if err:=app.Listen(":"+port);err!=nil {
 		log.Fatal(err)
