@@ -1,6 +1,8 @@
 
 # 🌩️ SBucket - S3-Like Object Storage (Go + MinIO)
 
+<img src="../static/sbucket-logo.png" alt="SBucket Logo" width="200"/>
+
 SBucket is a minimal, self-hosted object storage backend similar to Amazon S3, built using **Go**, **Fiber**, and **MinIO**. It supports user-authenticated file upload, download, listing, and signed URL access.
 
 ---
