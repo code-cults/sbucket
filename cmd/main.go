@@ -4,7 +4,6 @@ import (
 	"log"
 	"github.com/srirangamuc/sbucket/internal/config"
 	"github.com/srirangamuc/sbucket/internal/db"
-	"github.com/srirangamuc/sbucket/internal/model"
 	"github.com/gofiber/fiber/v2"
 	"github.com/srirangamuc/sbucket/internal/api/handler"
 	"github.com/srirangamuc/sbucket/internal/middleware"
@@ -13,13 +12,15 @@ import (
 func main(){
 	config.LoadEnv()
 	db.Connect()
-	db.DB.AutoMigrate(&model.User{})
+	db.AutoMigrateModels()
 	app := fiber.New()
 	app.Get("/",func(c *fiber.Ctx) error{
 		return c.SendString("App is live")
 	})
 	app.Post("/signup",handler.Signup)
 	app.Post("/login",handler.Login)
+
+	app.Post("/bucket",middleware.RequireAuth(),handler.CreateBucket)
 
 	app.Get("/me",middleware.RequireAuth(),func(c *fiber.Ctx) error{
 		userID := c.Locals("userID").(int)
