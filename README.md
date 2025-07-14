@@ -117,7 +117,7 @@ Server will run at `http://localhost:3000`.
 
 ## 📜 License
 
-[MIT License](/LICENCE)
+[MIT License](/LICENSE)
 
 ---
 
@@ -129,5 +129,5 @@ PRs welcome! File issues or ideas to improve.
 
 ## ✨ Author
 
-Made with ⚡ and ❤️ by [code.cults]
+Made with ⚡ and ❤️ by [[code.cults](https://github.com/code-cults)]
 
