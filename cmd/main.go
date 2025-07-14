@@ -31,14 +31,8 @@ func main(){
 	protected.Post("/bucket/:bucketID/upload",handler.UploadFile)
 	protected.Get("/bucket/:bucketID/file/:fileName",handler.DownloadFile)
 	protected.Get("/bucket/:bucketID/files",handler.ListOfFilesInBucket)
-
-	// app.Get("/me",middleware.RequireAuth(),func(c *fiber.Ctx) error{
-	// 	userID := c.Locals("userID").(int)
-	// 	return c.JSON(fiber.Map{
-	// 		"message":"Welcome user!",
-	// 		"userID" : userID,
-	// 	})
-	// })
+	protected.Get("/bucket/:bucketID/file/:fileName/signed",handler.GenerateSignedDownloadURL)
+	protected.Get("/bucket/:bucketID/upload-url/:fileName",handler.GeneratedSignedUploadURL)
 
 	port := config.GetEnv("PORT","3000")
 	if err:=app.Listen(":"+port);err!=nil {

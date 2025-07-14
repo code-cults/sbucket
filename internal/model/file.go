@@ -11,9 +11,9 @@ type File struct {
 	BucketID  uuid.UUID `gorm:"type:uuid;not null"`
 	FileName  string    `gorm:"not null"`
 	Size      int64     `gorm:"not null"`
-	Hash      string
-	MimeType  string
-	CreatedAt time.Time
+	Hash      string    `json:"hash"`
+	MimeType  string    `json:"mime_type"`
+	CreatedAt time.Time `json:"created_at"`
 }
 
 func (f *File) BeforeCreate(tx *gorm.DB) (err error) {

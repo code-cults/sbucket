@@ -6,6 +6,8 @@ import (
 	"github.com/minio/minio-go/v7/pkg/credentials"
 	"io"
 	"log"
+	"time"
+	"net/url"
 )
 
 var Client *minio.Client
@@ -35,4 +37,31 @@ func DownloadFromMinIO(bucketName,objectName string) (io.Reader,error) {
 		return nil, err
 	}
 	return obj, nil
+}
+
+func GeneratePresignedURL(bucketName,objectName string,expiry time.Duration) (string,error) {
+	reqParams := make(url.Values)
+	presignedURL, err := Client.PresignedGetObject(
+		context.Background(), bucketName, objectName, expiry, reqParams,
+	)
+	if err != nil {
+		return "", err
+	}
+	return presignedURL.String(), nil
+}
+
+func GeneratePresignedPutURL(bucketName, objectName string, expiry time.Duration) (string, error) {
+    reqParams := make(url.Values)
+
+    presignedURL, err := Client.PresignedPutObject(
+        context.Background(),
+        bucketName,
+        objectName,
+        expiry,
+    )
+    if err != nil {
+        return "", err
+    }
+
+    return presignedURL.String(), nil
 }
