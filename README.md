@@ -123,7 +123,7 @@ Server will run at `http://localhost:3000`.
 
 ## 🤝 Contributing
 
-PRs welcome! File issues or ideas to improve. just Mail [Creator](dev.srirangam.uc@gmail.com) for your concerns and cool ideas.
+PRs welcome! File issues or ideas to improve. Just Mail [Creator](dev.srirangam.uc@gmail.com) for your concerns and cool ideas.
 
 ---
 
