@@ -43,3 +43,6 @@ testdata/
 
 # Node modules (if any frontend)
 node_modules/
+
+# MinIO Files
+data/

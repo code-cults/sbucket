@@ -9,6 +9,7 @@ func AutoMigrateModels(){
 	err := DB.AutoMigrate(
 		&model.User{},
 		&model.Bucket{},
+		&model.File{},
 	)
 
 	if err != nil{
