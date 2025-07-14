@@ -78,7 +78,7 @@ Create a bucket: `sbucket`
 ### 4. Run the Server
 
 ```bash
-go run main.go
+go run cmd/main.go
 ```
 
 Server will run at `http://localhost:3000`.
